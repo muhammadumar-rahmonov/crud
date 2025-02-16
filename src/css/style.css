@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #1e1e1e;
+    color: white;
+}
+
+
+body {
+    font-family: sans-serif;
+}
+
+
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+img {
+    display: inline-block;
+}
+
+#inputs ul li input {
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    color: black;
+}
+
+#inputs ul li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 30px;
+}
+
+#inputs ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+}
+
+#add-btn {
+    max-width: 110px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#add-btn:hover {
+    background-color: #218838;
+}
+
+.post-sec{
+    padding: 20px;
+}
+table{
+    width: 100%;
+    border-collapse:collapse;
+    margin-top: 20px;
+    background-color: #333;
+    border: 2px solid #ddd;
+    table-layout: fixed;
+
+}
+.tr{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 1300px;
+}
+#tbody{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+thead{
+    border-bottom: 2px solid #ddd;
+}
+th{
+    display: inline-block;
+    width: 100%;
+    border-left: 2px solid #ddd;
+    padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  
+}
+td{
+    display: block;
+    width: 100%;
+    border-left: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+   
+}
+#delete-btn{
+    border: none;
+    padding: 10px 15px;
+    background-color: red;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+#delete-btn:hover{
+    background-color: rgba(255, 0, 0, 0.441);
+}
+#edit-btn{
+    border: none;
+    padding: 10px   ;
+    background-color: #ffc107;
+    color: black;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+#edit-btn:hover{
+    background-color: #ffc10793;
+}
