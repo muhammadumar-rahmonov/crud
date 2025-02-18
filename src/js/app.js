@@ -1,15 +1,22 @@
 const tbody = document.getElementById("tbody")
 const list = document.getElementById("tr")
 const deleteBtn = document.getElementById("delete-btn")
+const submitBtn = document.querySelector(".submit-btn")
+
+
+
+
 const editBtn = document.getElementById("edit-btn")
 const name = document.getElementById("name")
 const age = document.getElementById("age")
 const address = document.getElementById("address")
 const email = document.getElementById("email")
+
 const addBtn = document.getElementById("add-btn")
-const postForm = document.getElementById("inputs")
+
 
 let userId;
+let editedData;
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -39,18 +46,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
             document.querySelectorAll("#edit-btn").forEach(item => {
                 item.addEventListener("click", e => {
-                    const studentId = e.target.attributes['student-id']
-
-                    const studentData = data.find(val => studentId.value === val._id)
+                   userId = e.target.attributes["student-id"]
+                   const studentData = data.find(val => userId.value === val._id)
+                   console.log(studentData);
+                   console.log(name);
+                   
                     if (studentData) {
-                        name.value = studentData.address.email
-                        userId = studentId.value
+                        document.getElementById("edit-name").value = studentData.name;
+                        document.getElementById("edit-age").value  = studentData.age;
+                        document.getElementById("edit-address").value= studentData.adress;
+                        document.getElementById("edit-email").value = studentData.email;
+                        
                     }
+
+                   
+                    
+                document.querySelector(".modal-overlay").style.display = "block"
+                submitBtn.addEventListener("click", e =>{
+                    console.log(userId.value);
+                    const updatedData ={
+                        adress: document.getElementById("edit-address").value,
+                        age:  document.getElementById("edit-age").value,
+                        email: document.getElementById("edit-email").value,
+                        name:  document.getElementById("edit-name").value,
+                    }
+                        updateData(userId.value, updatedData)
+                      
+                        
+                        
+                        
+                        
+                       
+                        
+                    
+                }
+    
+                )
+                    
                 })
-
+               
             })
+           
+           
 
-            document.querySelectorAll("#delete-btn").forEach( item =>{
+            document.querySelectorAll("#delete-btn").forEach(item => {
                 item.addEventListener('click', e => {
                     userId = e.target.attributes['student-id'].value
                 })
@@ -63,76 +102,90 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     getData()
 
-    postForm.addEventListener('submit', e => {
+    addBtn.addEventListener('click', e => {
         e.preventDefault()
         const userNameVal = document.getElementById('name').value
         const age = document.getElementById('age').value
         const address = document.getElementById('address').value
-        const email = document.getElementById('email')
+        const email = document.getElementById('email').value
 
         const data = {
-            name: userNameVal, adress: address, age: age, email: email,
+            name: userNameVal,
+            adress: address,
+            age: age,
+            email: email,
         }
 
         postFunction(data)
 
-    })
-    // console.log(postForm);
 
-    
+
+    })
+
+
+
 
 
 })
 
 
 
-    // async function postFunction(data) {
-    //     try {
-    //         const response = await fetch("https://task-dev-kom.vercel.app/api/add-friend-details", {
-    //             method: "POST",
-    //             headers: { "Content-type": "aplication/json" },
-    //             body: JSON.stringify(data)
-    //         })
+async function postFunction(data) {
+    try {
+        const response = await fetch("https://task-dev-kom.vercel.app/api/add-friend-details", {
+            method: "POST",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify(data)
+        })
 
-    //         console.log(data);
-
-
-    //     } catch (error) {
-    //         console.log(error);
-            
-    //     }
-    // }
-    // postFunction()
+        console.log(response);
 
 
-    async function updateData(id,data) {
-        try {
-            const response = await fetch(`https://task-dev-kom.vercel.app/api/update-friend${id}`,
-                {
-                    method: 'PUT',
-                    headers: {'content-type': 'aplication/json'},
-                    body: JSON.stringify(data,)
-                }
-            
-            )
-            
-            
-        } catch (error) {
-            
-        }
+    } catch (error) {
+        console.log(error);
+
+    }
+}
+
+
+async function updateData(id, data) {
+    try {
+        const response = await fetch(`https://task-dev-kom.vercel.app/api/update-friend/${id}`,
+            {
+                method: 'PUT',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify(data,)
+            }
+
+        )
+
+
+    } catch (error) {
 
     }
 
-    deleteBtn.addEventListener('click', e => {
-        deleteUser(userId)
+}
+
+
+
+async function deleteUser(id) {
+    try {
+        const response = await fetch(`https://task-dev-kom.vercel.app/api/delete-friend${id}`, {
+            method: 'DELETE'
+        })
+    } catch (error) {
+
+    }
+}
+
+
+    document.querySelectorAll(".close-btn").forEach(item => {
+        item.addEventListener("click", e =>{
+          const modal = item.closest(".modal-overlay")
+          if(modal) {
+            modal.style.display = "none"
+          }
+        
+        })
     })
-
-    async function deleteUser(id) {
-        try {
-            const response = await fetch(`https://task-dev-kom.vercel.app/api/delete-friend${id}`,{
-               method: 'DELETE'
-            })
-        } catch (error) {
-            
-        }
-    }
+   
