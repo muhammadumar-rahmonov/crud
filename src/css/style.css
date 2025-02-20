@@ -62,53 +62,27 @@ img {
 
 table {
     width: 100%;
-    border-collapse: collapse;
     margin-top: 20px;
     background-color: #333;
-    border: 2px solid #ddd;
-    table-layout: fixed;
+    border: 4px solid #ddd;
+  
 
 }
 
 .tr {
-    display: flex;
-    justify-content: space-between;
+    
     gap: 20px;
-    width: 1300px;
-}
-
-#tbody {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-thead {
-    border-bottom: 2px solid #ddd;
-}
-
-th {
-    display: inline-block;
     width: 100%;
-    border-left: 2px solid #ddd;
-    padding: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
 }
 
-td {
-    display: block;
-    width: 100%;
-    border-left: 2px solid #ddd;
-    border-bottom: 2px solid #ddd;
+td, th{
     padding: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
+    text-align: center;
 }
+
+
+ 
+
 
 #delete-btn {
     border: none;
@@ -139,7 +113,6 @@ td {
 
 .modal-page {
     padding: 120px 50px;
-    
     position: fixed;
     top: 50%;
     left: 50%;
@@ -149,27 +122,31 @@ td {
     gap: 20px;
     border-radius: 10px;
 }
-.modal-page input{
+
+.modal-page input {
     background-color: white;
     padding: 5px;
     border-radius: 5px;
     border: none;
     color: black;
-   
+
 }
-.submit-btn{
+
+.submit-btn {
     padding: 10px 15px;
     font-size: 15px;
     border-radius: 8px;
     background-color: #28a745;
     border: none;
     cursor: pointer;
-  
+
 }
-.submit-btn:hover{
+
+.submit-btn:hover {
     background-color: #218838;
 }
-.modal-overlay{
+
+.modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -179,11 +156,69 @@ td {
     z-index: 100;
     display: none;
 }
-.close-btn{
+
+.close-btn {
     width: 40px;
     padding: 5px;
     border-radius: 50px;
     position: absolute;
     top: 0px;
-    right:0px;
+    right: 0px;
+}
+
+.delete-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    display: none;
+}
+
+
+.delete-modal {
+    padding: 20px 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+   
+   
+    
+}
+
+.delete-modal h4 {
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.no-btn {
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid white;
+    cursor: pointer;
+
+}
+.no-btn:hover{
+    background-color: white;
+    color: black;
+}
+
+.yes-btn {
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: red;
+    border: 1px solid red;
+    cursor: pointer;
+}
+.yes-btn:hover{
+    background-color: red;
+    color: black;
 }

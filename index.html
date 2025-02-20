@@ -8,7 +8,17 @@
   </head>
   <body>
     <div class="container">
-      <div class="modal-overlay">
+      <div id="delete-overlay" class="delete-overlay">
+        <div class="delete-modal">
+          <h4>are you sure bro?</h4>
+            <div class="buttons">
+              <button class="no-btn">no</button>
+              <button id="delete-modal-btn" class="yes-btn">yese delete it!</button>
+            </div>
+        </div>
+      </div>
+
+      <div id="modal-overlay" class="modal-overlay">
         <div class="modal-page">
           <button class="close-btn">
             <svg
@@ -34,6 +44,7 @@
           <button class="submit-btn">submit</button>
         </div>
       </div>
+
 
       <div id="inputs">
         <ul>
